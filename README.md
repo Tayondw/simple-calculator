@@ -12,7 +12,7 @@ You are now ready to start working on your app. Follow the comments in the code!
 
 In this assessment, your goal is to build a simple calculator app.
 
-<img align="left" src="./simple-calculator-app/src/assets/simple-calculator-app.png" alt="simple-calculator" />
+<img width="1558" height="492" alt="Fa6fi9AMSG-un4vQDKhvhw_d1e86668bffd4747921c4c1deb34b8e1_MicrosoftTeams-image-6-" src="https://github.com/user-attachments/assets/b44d6e6a-7519-4e9f-a696-1a3dae9be95a" />
 
 The app should be fully functional. However, since you do not have the App.css file in the root folder, you need to add it, with the following code:
 ```css
