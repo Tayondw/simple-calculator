@@ -12,7 +12,7 @@ You are now ready to start working on your app. Follow the comments in the code!
 
 In this assessment, your goal is to build a simple calculator app.
 
-![alt text](image.png)
+<img align="left" src="./simple-calculator-app/src/assets/simple-calculator-app.png" alt="simple-calculator" />
 
 The app should be fully functional. However, since you do not have the App.css file in the root folder, you need to add it, with the following code:
 ```css
