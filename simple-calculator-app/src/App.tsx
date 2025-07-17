@@ -2,34 +2,59 @@ import { useState, useRef } from "react";
 import "./App.css";
 
 function App() {
-	const inputRef = useRef(null);
-	const resultRef = useRef(null);
+	const inputRef = useRef<HTMLInputElement>(null);
+	const resultRef = useRef<HTMLParagraphElement>(null);
 	const [result, setResult] = useState(0);
 
-	const plus = (e) => {
+	const plus = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		setResult((result) => result + Number(inputRef.current.value));
-	}
+		if (inputRef.current) {
+			setResult((result) => result + Number(inputRef.current!.value));
+		}
+	};
 
-	const minus = (e) => {
+	const minus = (e: React.MouseEvent<HTMLButtonElement>) => {
 		// Add the code for the minus function
-	}
+		e.preventDefault();
+		if (inputRef.current) {
+			setResult((result) => result - Number(inputRef.current!.value));
+		}
+	};
 
-	const times = (e) => {
+	const times = (e: React.MouseEvent<HTMLButtonElement>) => {
 		// Add the code for the plus function
-	}
+		e.preventDefault();
+		if (inputRef.current) {
+			setResult((result) => result * Number(inputRef.current!.value));
+		}
+	};
 
-	function divide(e) {
+	const divide = (e: React.MouseEvent<HTMLButtonElement>) => {
 		// Add the code for the divide function
-	}
+		e.preventDefault();
+		if (inputRef.current) {
+			const inputValue = Number(inputRef.current.value);
+			if (inputValue === 0) {
+				alert("Cannot divide by zero");
+				return;
+			}
+			setResult((result) => result / inputValue);
+		}
+	};
 
-	function resetInput(e) {
+	const resetInput = (e: React.MouseEvent<HTMLButtonElement>) => {
 		// Add the code for the resetInput function
-	}
+		e.preventDefault();
+		if (inputRef.current) {
+			inputRef.current.value = "";
+		}
+	};
 
-	function resetResult(e) {
+	const resetResult = (e: React.MouseEvent<HTMLButtonElement>) => {
 		// Add the code for the resetResult function
-	}
+		e.preventDefault();
+		setResult(0);
+	};
 
 	return (
 		<div className="App">
@@ -37,7 +62,7 @@ function App() {
 				<h1>Simplest Working Calculator</h1>
 			</div>
 			<form>
-				<p ref={resultRef}>{/* add the value of the current total */}</p>
+				<p ref={resultRef}>{result}</p>
 				<input
 					pattern="[0-9]"
 					ref={inputRef}
@@ -45,11 +70,11 @@ function App() {
 					placeholder="Type a number"
 				/>
 				<button onClick={plus}>add</button>
-				{/* Add the subtract button */}
-				{/* Add the multiply button */}
-				{/* Add the divide button */}
-				{/* Add the resetInput button */}
-				{/* Add the resetResult button */}
+				<button onClick={minus}>subtract</button>
+				<button onClick={times}>multiply</button>
+				<button onClick={divide}>divide</button>
+				<button onClick={resetInput}>reset input</button>
+				<button onClick={resetResult}>reset result</button>
 			</form>
 		</div>
 	);

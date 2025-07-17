@@ -21,3 +21,6 @@ button:nth-last-child(1) {
 	background: tomato;
 	color: white;
 }
+button:hover {
+      cursor: pointer;
+}
