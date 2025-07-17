@@ -1,69 +1,125 @@
-# React + TypeScript + Vite
+# Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+For this assessment, you will be building a calculator in React. You are provided with code snippets, and your task is to use these, plus any of your code to complete a calculator app that can perform the four basic mathematical operations: addition, subtraction, multiplication, and division.
 
-Currently, two official plugins are available:
+## Before you begin
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+If you execute the `npm start` command before changing any code in this task, you'll get the notification in the code lab's terminal that reads *"webpack compiled successfully"*.
 
-## Expanding the ESLint configuration
+You are now ready to start working on your app. Follow the comments in the code! They are your instructions on what you need to do to make this app work. For example, once you've added the imports, you should be able to serve the app. If still needs work, but at least you'll have the app showing in the browser.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Step 1.**
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+In this assessment, your goal is to build a simple calculator app.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+<img width="1558" height="492" alt="Fa6fi9AMSG-un4vQDKhvhw_d1e86668bffd4747921c4c1deb34b8e1_MicrosoftTeams-image-6-" src="https://github.com/user-attachments/assets/b44d6e6a-7519-4e9f-a696-1a3dae9be95a" />
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The app should be fully functional. However, since you do not have the App.css file in the root folder, you need to add it, with the following code:
+```css
+* {
+    font-family: sans-serif;
+}
+input,
+button {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+input {
+    display: block;
+    margin-bottom: 20px;
+}
+button {
+    border: 1px solid gray;
+    background: whitesmoke;
+    margin-right: 5px;
+}
+button:nth-last-child(2),
+button:nth-last-child(1) {
+    background: tomato;
+    color: white;
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Step 2.**
+Here is the app's starting code:
+```jsx
+import {
+  useState,
+  useRef
+} from "react"; 
+import "./App.css";
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+function App() { 
+  const inputRef = useRef(null); 
+  const resultRef = useRef(null); 
+  const [result, setResult] = useState(0); 
+ 
+  function plus(e) { 
+    e.preventDefault(); 
+    setResult((result) => result + Number(inputRef.current.value)); 
+  }; 
+ 
+  function minus(e) { 
+  	// Add the code for the minus function 
+  };
+ 
+  function times(e) { 
+    // Add the code for the plus function 
+  }; 
+ 
+  function divide(e) { 
+    // Add the code for the divide function 
+  };
+ 
+  function resetInput(e) { 
+    // Add the code for the resetInput function 
+  }; 
+ 
+  function resetResult(e) { 
+  	// Add the code for the resetResult function 
+  }; 
+ 
+  return ( 
+    <div className="App"> 
+      <div> 
+        <h1>Simplest Working Calculator</h1> 
+      </div> 
+      <form> 
+        <p ref={resultRef}> 
+          {/* add the value of the current total */} 
+        </p> 
+        <input
+          pattern="[0-9]" 
+          ref={inputRef} 
+          type="number" 
+          placeholder="Type a number" 
+        /> 
+        <button onClick={plus}>add</button> 
+        {/* Add the subtract button */} 
+        {/* Add the multiply button */} 
+        {/* Add the divide button */} 
+        {/* Add the resetInput button */} 
+        {/* Add the resetResult button */} 
+      </form> 
+    </div> 
+  ); 
+} 
+ 
+export default App;
 ```
+Your goal is to use this starting code and extend it with missing pieces to make the app.
+- `Addition (plus)`: This function is already provided. It adds the value from the input field to the current result.
+- `Subtraction (minus)`: Implement this function to subtract the input value from the result.
+- `Multiplication (times)`: Implement this function to multiply the result by the input value.
+- `Division (divide)`: Implement this function to divide the result by the input value. Make sure to handle division by zero by showing an alert.
+- `Reset Input (resetInput)`: This function will reset the input field when the user clicks the reset button.
+- `Reset Result (resetResult)`: This function will reset the displayed result to 0.
+
+**Step 3.**
+
+- At the top of the lab environment, locate the Terminal menu. Click on it to open a dropdown, then select New Terminal.  Use the  `npm start` command to start the development server. 
+- Ensure that you have the necessary dependencies installed (like React, ReactDOM, and React scripts).
+- You can now view the App in your browser by navigating to localhost:3000. To view the output, click on the Browser Preview icon located on the left panel. It is the last icon in the panel.
+- In your browser, enter: http://localhost:3000 to see the output.a fully working simple calculator app.
+
